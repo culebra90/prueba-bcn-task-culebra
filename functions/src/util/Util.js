@@ -57,7 +57,7 @@ class Util {
           return false;
         }
       } else {
-        res.status(500).json({message: "path local no permitido, debe estar en la carpeta 'images', un ejemplo es: '/images/arbol-frutal.jpg'"});
+        res.status(500).json({message: "path local no permitido, debe estar en la carpeta 'images', un ejemplo es: '/images/background-capitole.jpg'"});
         return false;
       }
     }
