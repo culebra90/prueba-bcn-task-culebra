@@ -4,7 +4,7 @@ const serviceAccount = require("./../../.credentials/serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "pruebas-task-bcn.appspot.com",
+  storageBucket: `${process.env.PROJECT_ID}.appspot.com`
 });
 
 class CloudStorage {
