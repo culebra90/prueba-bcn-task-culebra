@@ -15,7 +15,7 @@
     "functions": {
       "port": 5001
     },    
-    "singleProjectMode": true
+    "singleProjectMode": true    
   },
   "remoteconfig": {
     "template": "remoteconfig.template.json"

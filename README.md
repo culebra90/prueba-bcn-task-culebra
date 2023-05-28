@@ -29,8 +29,8 @@ firebase use --add
 6. Configurar las variables de entorno necesarias para el proyecto. Puedes crear un archivo `.env` en la raíz del proyecto y agregar las siguientes variables:
 
 ```plaintext
-FIREBASE_API_KEY=<tu_api_key>
-FIREBASE_PROJECT_ID=<tu_project_id>
+COLLECT_DB=<collect_firestore>
+PROJECT_ID=<PROJECT_ID>
 ```
 
 7. Ahora estás listo para ejecutar el proyecto tanto en entorno local como en la nube.
@@ -55,13 +55,13 @@ La información se guarda en la base de datos de Firestore en el siguiente forma
     "fechaCreacion": "2023-05-28T14:39:17.545Z",
     "hash": "ea6f113b78313e980fec6ef809709b6f",
     "size": 1024,
-    "urlDescarga": "https://storage.googleapis.com/pruebas-task-bcn.appspot.com/output/free-photo-of-mujer-sentado-tejanos-hojas/1024/ea6f113b78313e980fec6ef809709b6f.jpeg"
+    "urlDescarga": "https://storage.googleapis.com/proyecto-firebase.appspot.com/output/background-capitole/1024/ea6f113b78313e980fec6ef809709b6f.jpeg"
   },
   "image800": {
     "fechaCreacion": "2023-05-28T14:39:17.354Z",
     "hash": "ea5bff9fed8b1f24468c90df743f02ed",
     "size": 800,
-    "urlDescarga": "https://storage.googleapis.com/pruebas-task-bcn.appspot.com/output/free-photo-of-mujer-sentado-tejanos-hojas/800/ea5bff9fed8b1f24468c90df743f02ed.jpeg"
+    "urlDescarga": "https://storage.googleapis.com/proyecto-firebase.appspot.com/output/background-capitole/800/ea5bff9fed8b1f24468c90df743f02ed.jpeg"
   },
   "path": "/images/background-capitole.jpg",
   "taskId": 1685284754689,
@@ -133,10 +133,10 @@ Ejemplo de solicitud utilizando cURL:
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "path": "/images/background.jpg",
+    "path": "/images/background-capitole.jpg",
     "saveLocal": true
   }' \
-  http://localhost:5000/process-image
+  http://localhost:5000/task
 ```
 
 Si la función está desplegada en la nube, la URL de la solicitud sería diferente.
@@ -149,7 +149,7 @@ Ejemplo de solicitud utilizando cURL:
 
 ```bash
 curl -X GET \
-  http://localhost:5000/process-image/{documentId}
+  http://localhost:5000/task/{taskId}
 ```
 
 La URL incluirá el ID del documento que deseas consultar.
