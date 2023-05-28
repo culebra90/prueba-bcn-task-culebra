@@ -2,6 +2,28 @@
 
 Este es el archivo README para el proyecto que utiliza la arquitectura en capas con el framework de Firebase de Google Cloud. El objetivo de este proyecto es procesar y persistir cierta información relacionada con imágenes.
 
+## Solucion adoptada
+Soluciones posibles:
+### Ejecutado Localmente
+- Descargar imagenes y (con previo procesamiento) guardarlas localmente.
+- Proporcionar una ruta de imagen, procesarlas localmente y guardarlas localmente.
+- Descargar imagenes, y luego subirlas a la nube (previamente procesadas).
+### Ejecutado desde la nube
+- Descargar imagenes, y luego subirlas a la nube (previamente procesadas).
+- Proporcionar una ruta de imagen local*, procesarlas localmente y guardarlas en la nube.
+Nota*: En la nube tambien se puede procesar desde una ruta local, ya que las funciones de google permiten subir ficheros y carpetas (aunque no es lo optimo).
+
+Se guarda la siguiente informacion siempre en firestore (Base de datos de Google): 
+  - TaskId (Fecha de inicio del proceo, en formato fecha UNIX)
+  - path del recurso a procesar (URL o path local)
+  - Fecha de Inicio de la Creacion del proceso.
+  - Fecha Fin del proceso.
+  - 2 objetos de cada una de las imagenes (una de la resolucion 1024 y otra de 800):
+      - Fecha de inicio del procesamiento de la imagen
+      - Fecha Fin del procesamiento (incluyendo guardado local o en nube)
+      - hash (md5 binario del fichero), en formato Hex.
+      - Tamaño de la imagen
+
 ## Configuración de Firebase
 
 Antes de utilizar este proyecto, es necesario configurar Firebase. A continuación, se muestra un ejemplo de cómo configurar Firebase y los comandos necesarios:
@@ -75,7 +97,7 @@ La información se guarda en la base de datos de Firestore en el siguiente forma
 Antes de utilizar este proyecto, asegúrate de cumplir con los siguientes requisitos:
 
 - Descargar las credenciales de Firebase en formato JSON.
-- Colocar el archivo de credenciales en la carpeta "-credentials" del proyecto.
+- Colocar el archivo de credenciales en la carpeta ".credentials" dentro de la carpeta "functions" del proyecto.
 - El archivo de credenciales debe tener el nombre "serviceAccountKey.json".
 
 Puedes obtener las credenciales de Firebase siguiendo estos pasos:
@@ -91,7 +113,7 @@ Puedes obtener las credenciales de Firebase siguiendo estos pasos:
 ## Configuración del Proyecto
 
 1. Realiza la configuración de Firebase siguiendo las instrucciones mencionadas anteriormente en la sección "Configuración de Firebase".
-2. Descarga las credenciales de Firebase en formato JSON y colócalas en la carpeta "-credentials" con el nombre "serviceAccountKey.json".
+2. Descarga las credenciales de Firebase en formato JSON y colócalas en la carpeta ".credentials" con el nombre "serviceAccountKey.json".
 3. Asegúrate de que todas las dependencias del proyecto estén instaladas correctamente ejecutando `npm install` en la raíz del proyecto.
 4. Realiza las pruebas unitarias y de integración ejecutando `npm test`.
 5. Inicia el proyecto localmente o despliégalo en la nube utilizando los comandos correspondientes.
@@ -103,7 +125,7 @@ A continuación, se describe cómo utilizar el proyecto:
 1. Ejecuta el proyecto en el entorno local o en la nube siguiendo las instrucciones proporcionadas en la sección correspondiente.
 2. Realiza solicitudes POST para procesar imágenes. Asegúrate de proporcionar los parámetros requeridos, como `path` y, si es necesario, `saveLocal`.
 3. Utiliza el método GET para obtener la informacion del procesamiento de una imagen utilizando su ID (taskId).
-4. Verifica la persistencia de la información en Firestore y la ubicación de las imágenes en Cloud Storage.
+4. Verifica la persistencia de la información en Firestore y la ubicación de las imágenes en Cloud Storage o guardadas en Local (según corresponda tu peticion POST o si estas en Local/Nube).
 
 Recuerda seguir las instrucciones de configuración y utilizar las rutas y parámetros adecuados según corresponda a tu entorno local o despliegue en la nube.
 
@@ -123,9 +145,9 @@ firebase deploy --only functions
 
 Para utilizar el método "POST", puedes enviar una solicitud con los siguientes parámetros: 
 
-- `path` (obligatorio): Ruta de la imagen en formato "/images/nombre-de-la-imagen.jpg" o una URL desde la cual se puede descargar la imagen.
+- `path` (obligatorio): Ruta de la imagen en formato "/images/nombre-de-la-imagen.jpg" o una URL desde la cual se puede descargar la imagen (tipo: String).
 
-- `saveLocal` (opcional): Indica si se debe guardar la imagen localmente. Este parámetro solo lo tomara en cuenta cuando se ejecuta localmente.
+- `saveLocal` (opcional): Indica si se debe guardar la imagen localmente. Este parámetro solo lo tomara en cuenta cuando se ejecuta localmente (tipo: boolean).
 
 Ejemplo de solicitud utilizando cURL:
 
