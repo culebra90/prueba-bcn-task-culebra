@@ -121,7 +121,7 @@ firebase deploy --only functions
 
 ### Utilización del método "POST"
 
-Para utilizar el método "POST", puedes enviar una solicitud con los siguientes parámetros:
+Para utilizar el método "POST", puedes enviar una solicitud con los siguientes parámetros: 
 
 - `path` (obligatorio): Ruta de la imagen en formato "/images/nombre-de-la-imagen.jpg" o una URL desde la cual se puede descargar la imagen.
 
@@ -140,6 +140,8 @@ curl -X POST \
 ```
 
 Si la función está desplegada en la nube, la URL de la solicitud sería diferente.
+
+Nota: En el proyecto tiene una carpeta "images" dentro de la carpeta "functions", la cual se alojan 3 imagenes: "background-capitole.jpg", "logo-capitole-white-small.png", "personas-oficina.jpg".
 
 ### Método "GET" para obtener el procesamiento por ID
 
