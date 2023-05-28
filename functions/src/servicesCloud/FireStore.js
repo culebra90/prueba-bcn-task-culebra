@@ -1,14 +1,13 @@
 const admin = require("firebase-admin");
-
-class FireStore { 
-
-  static collectionDb = 'task'
-  static db = admin.firestore();
-  static collectionRef = this.db.collection(this.collectionDb);
+const functions = require('firebase-functions');
+const { defineInt, defineString } = require('firebase-functions/params');
+const collectionDb = process.env.COLLECT_DB;
+class FireStore {   
 
   static async insertTask(jsonData){
-    try{      
-      return this.collectionRef
+    try{     
+      const collectionRef = admin.firestore().collection(collectionDb);
+      return collectionRef
         .doc(jsonData.taskId.toString()) 
         .set(jsonData)
         .then((res) => {
@@ -27,7 +26,8 @@ class FireStore {
 
   static async getTaskById(taskId){
     try {
-      const docRef = this.collectionRef.doc(taskId);
+      const collectionRef = admin.firestore().collection(collectionDb);
+      const docRef = collectionRef.doc(taskId);
       const snapshot = await docRef.get();
     
       if (snapshot.exists) {
