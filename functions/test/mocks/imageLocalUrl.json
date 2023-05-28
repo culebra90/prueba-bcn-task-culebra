@@ -1,0 +1,16 @@
+{
+    "uploadFile":{
+        "status": "ok", 
+        "date": "2023-05-28T14:39:17.354Z", 
+        "urlDescarga" : "https://storage.googleapis.com/-proyect-firebase-.appspot.com/output/free-photo-of-mujer-sentado-tejanos-hojas/800/ea5bff9fed8b1f24468c90df743f02ed.jpeg"
+    },
+    "resizeImage":{
+        "hash": "ea5bff9fed8b1f24468c90df743f02ed",
+        "processedData": "dataProcesada"
+    },
+    "saveLocal":{
+        "status": "ok", 
+        "date": "2023-05-28T14:39:17.354Z", 
+        "pathFolder" : "/output/free-photo-of-mujer-sentado-tejanos-hojas/800/ea5bff9fed8b1f24468c90df743f02ed.jpeg"
+    }
+}

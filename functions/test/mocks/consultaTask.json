@@ -1,0 +1,21 @@
+{
+  "consultaExistente":{
+      "image1024": {
+        "fechaCreacion": "2023-05-28T14:39:17.545Z", 
+        "hash": "ea6f113b78313e980fec6ef809709b6f", 
+        "size": 1024, 
+        "urlDescarga": "https://storage.googleapis.com/pruebas-task-bcn.appspot.com/output/free-photo-of-mujer-sentado-tejanos-hojas/1024/ea6f113b78313e980fec6ef809709b6f.jpeg"
+      }, 
+      "image800": {
+        "fechaCreacion": "2023-05-28T14:39:17.354Z", 
+        "hash": "ea5bff9fed8b1f24468c90df743f02ed", 
+        "size": 800, 
+        "urlDescarga": "https://storage.googleapis.com/pruebas-task-bcn.appspot.com/output/free-photo-of-mujer-sentado-tejanos-hojas/800/ea5bff9fed8b1f24468c90df743f02ed.jpeg"
+      }, 
+      "path": "/images/background-capitole.jpg", 
+      "taskId": 1685284754689, 
+      "timestampFinish": "2023-05-28T14:39:17.545Z", 
+      "timestampStart": "2023-05-28T14:39:14.689Z"
+  },
+  "consultaInesixtente": { "msg": "no existe el taskId" }
+}

@@ -1,1 +1,0 @@
-# prueba-bcn-task-culebra
