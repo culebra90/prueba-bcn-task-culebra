@@ -11,6 +11,7 @@ class CloudStorage {
   static async uploadFile(image, object, size) {
     try {
       const bucket = admin.storage().bucket();
+      console.log("bucket.name => ", bucket.name)
       const folderOut = Util.getFolderOut(object.path, size);
       const {extFile} = Util.obtenerNameExt(object.path);
       const rutaArchivo = `${folderOut}/${image.hash}.${extFile}`;
@@ -22,11 +23,13 @@ class CloudStorage {
         public: true,
       });
 
+
       console.log("Archivo subido exitosamente.");
       const fechaCreacion = new Date().toISOString();
       const urlDescarga = `https://storage.googleapis.com/${bucket.name}${rutaArchivo}`;
       return {status: "ok", date: fechaCreacion, urlDescarga};
     } catch (error) {
+      console.log("bucket.name => ", bucket.name)
       console.error("Error al subir el archivo:", error);
       throw error;
     }

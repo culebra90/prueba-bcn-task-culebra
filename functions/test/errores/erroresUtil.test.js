@@ -35,7 +35,7 @@ describe('API Tests', () => {
       .expect(500);
 
     //console.log("response.body 3 => ", response.body)
-    expect(response.body).toEqual({ message: "path local no permitido, debe estar en la carpeta 'images', un ejemplo es: '/images/arbol-frutal.jpg'"});
+    expect(response.body).toEqual({ message: "path local no permitido, debe estar en la carpeta 'images', un ejemplo es: '/images/background-capitole.jpg'"});
   }, 600000);
 
   it('enviar path con formato imagen invalida', async () => {

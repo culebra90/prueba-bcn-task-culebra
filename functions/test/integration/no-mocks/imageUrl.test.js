@@ -1,6 +1,11 @@
 const request = require('supertest');
 const { task } = require('../../../index');
 
+beforeAll(()=>{
+  process.env.COLLECT_DB="task"
+  process.env.PROJECT_ID="pruebas-task-bcn"
+});
+
 describe('API Tests', () => {
   it('Procesar OK Imagenes por URL y subirlas a la nube', async () => {
     const response = await request(task)

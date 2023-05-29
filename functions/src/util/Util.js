@@ -7,6 +7,7 @@ class Util {
       res.status(500).json({msg: "'taskId' invalido"});
       return false;
     }
+    return true;
   }
 
   static validarEventPost(req, res) {
